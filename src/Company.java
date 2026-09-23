@@ -30,9 +30,38 @@ class Company {
     }
 
     public void exportPayrollReport() {
-        /*
+        double totalGross = 0;
+        double totalTax = 0;
+        double totalNet = 0;
 
-         */
+        String line = "-".repeat(97);
+
+        System.out.println("=".repeat(97));
+        System.out.println("BÁO CÁO LƯƠNG THÁNG - TechViet");
+        System.out.println("=".repeat(97));
+        System.out.printf("%-6s %-20s %-14s %15s %15s %15s%n",
+                "ID", "Họ tên", "Loại NV", "Lương gộp", "Thuế TNCN", "Thực lĩnh");
+        System.out.println(line);
+
+        for (Employee e : employeeList) {
+            double gross = e.calculateMonthlySalary();
+            double tax = TaxCalculator.calculateTax(gross);
+            double net = gross - tax;
+
+            totalGross += gross;
+            totalTax += tax;
+            totalNet += net;
+
+            String type = e.getClass().getSimpleName();
+
+            System.out.printf("%-6s %-20s %-14s %,15.0f %,15.0f %,15.0f%n",
+                    e.getId(), e.getName(), type, gross, tax, net);
+        }
+
+        System.out.println(line);
+        System.out.printf("%-6s %-20s %-14s %,15.0f %,15.0f %,15.0f%n",
+                "", "TỔNG CỘNG", "", totalGross, totalTax, totalNet);
+        System.out.println("=".repeat(97));
     }
 
     public void addEmployee(Employee employee) {
@@ -67,12 +96,14 @@ class Company {
         return null;
     }
 
-    public void sortEmployeeById(ArrayList<Employee> employeeList) {
+    public void sortEmployeeById() {
         employeeList.sort(Comparator.comparing(Employee::getId));
+        showAllEmployees();
     }
 
-    public void sortEmployeeBySalary(ArrayList<Employee> employeeList) {
+    public void sortEmployeeBySalary() {
         employeeList.sort(Comparator.comparingDouble(Employee::calculateMonthlySalary));
+        showAllEmployees();
     }
 
     public void removeEmployeeById(String id) {
