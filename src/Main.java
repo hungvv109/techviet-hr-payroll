@@ -20,7 +20,7 @@ public class Main {
         System.out.print("Please enter your feature: ");
         int input = scanner.nextInt();
 
-        while (input < 0 || input > 7) {
+        while (input < 0 || input > 8) {
             System.out.println("""
                     Invalid number!
                     Please enter again!""");
@@ -30,7 +30,6 @@ public class Main {
         // Add new employee
         switch (input) {
             case 0:
-                System.out.println("End program!");
                 break;
             case 1:
                 System.out.print("""
@@ -159,8 +158,29 @@ public class Main {
                 System.out.print("TechViet salary: " + techViet.getTotalPayroll());
                 break;
 
+            // Find highest salary employee.
             case 5:
+                techViet.showEmployee(techViet.getHighestPaidEmployee());
+
+                break;
+
+            // Sort by salary in descending order.
+            case 6:
+                techViet.sortEmployeeBySalary();
+                break;
+
+            // Export salary report (have tax).
+            case 7:
+                techViet.exportPayrollReport();
+                break;
+
+            // Remove the employee by ID.
+            case 8:
+                System.out.print("Enter ID you want remove: ");
+                String id = scanner.next();
+                techViet.removeEmployeeById(id);
                 break;
         }
+        System.out.println("End program!");
     }
 }
