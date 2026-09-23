@@ -161,6 +161,7 @@ public class Main {
             // Find highest salary employee.
             case 5:
                 techViet.showEmployee(techViet.getHighestPaidEmployee());
+
                 break;
 
             // Sort by salary in descending order.
