@@ -1,5 +1,5 @@
 public class PartTimeEmployee extends Employee {
-    private int hourlyRate;
+    private int hourlyRate = 50000;
     private int hoursWorkedThisMonth;
 
     public int getHourlyRate() {

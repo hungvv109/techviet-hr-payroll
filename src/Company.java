@@ -23,6 +23,7 @@ class Company {
         for (Employee employee : employeeList) {
             if (employee.calculateMonthlySalary() > max_salary) {
                 highestEmpl = employee;
+                max_salary = employee.calculateMonthlySalary();
             }
         }
 
@@ -70,19 +71,19 @@ class Company {
     }
 
     public void showAllEmployees() {
+        System.out.println("--------------------------------------------------------------------------------------------------------------");
         for (Employee employee : employeeList) {
-            double gross = employee.calculateMonthlySalary();
-            System.out.printf("%-6s %-20s %-14s %,15.0f %,15.0f %,15.0f%n",
-                    employee.getId(), employee.getName(), employee.getClass(),
-                    gross, employee.calculateTax(gross),
-                    gross - employee.calculateTax(gross));
+            showEmployee(employee);
+            System.out.println("--------------------------------------------------------------------------------------------------------------");
         }
     }
 
     public void showEmployee(Employee employee) {
+        System.out.printf("%-10s | %-15s | %-20s | %15s | %15s | %15s%n",
+                "ID", "Name", "Employee", "Gross", "Tax", "Net");
         double gross = employee.calculateMonthlySalary();
-        System.out.printf("%-6s %-20s %-14s %,15.0f %,15.0f %,15.0f%n",
-                employee.getId(), employee.getName(), employee.getClass(),
+        System.out.printf("%-10s | %-15s | %-20s | %,15.0f | %,15.0f | %,15.0f%n",
+                employee.getId(), employee.getName(), employee.getClass().getSimpleName(),
                 gross, employee.calculateTax(gross),
                 gross - employee.calculateTax(gross));
     }
