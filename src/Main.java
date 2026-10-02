@@ -1,10 +1,5 @@
 import java.util.Scanner;
-/*
-- xu ly enter sai id
-- Xu ly trung id
-- Xy lys nhap sai year
-- check if input string -> error
- */
+
 public class Main {
     public static void main(String[] args) {
         Company techViet = new Company();
@@ -48,7 +43,7 @@ public class Main {
                             2. Full-time Employee - Manager.
                             3. Part-time Employee.
                             0. Exit
-                            Please enter:\s""");
+                            Please enter:""");
 
                     int sub_input = scanner.nextInt();
 
@@ -65,12 +60,28 @@ public class Main {
                             break;
                         case 1:
                             Employee ft_employee = new FullTimeEmployee();
-                            System.out.print("ID of the employee (Form: IDxxxx): ");
-                            ft_employee.setId(scanner.next());
+                            while (true) {
+                                System.out.print("Enter ID (Form: IDxxxx): ");
+                                String id = scanner.nextLine();
+
+                                if (ft_employee.setId(id)) {
+                                    System.out.println("Valid ID!");
+                                    break;
+                                }
+                                System.out.println("Invalid ID! Please enter again.");
+                            }
                             scanner.nextLine();
 
-                            System.out.print("Name of the employee: ");
-                            ft_employee.setName(scanner.nextLine());
+                            while (true) {
+                                System.out.print("Enter name: ");
+                                String name = scanner.nextLine();
+
+                                if (ft_employee.setName(name)) {
+                                    System.out.println("Valid Name!");
+                                    break;
+                                }
+                                System.out.println("Invalid Name! Please enter again.");
+                            }
 
                             System.out.print("Hire year of the employee: ");
                             ft_employee.setHireYear(scanner.nextInt());
@@ -83,12 +94,28 @@ public class Main {
                             break;
                         case 2:
                             Employee manager = new Manager();
-                            System.out.print("ID of the employee (Form: IDxxxx): ");
-                            manager.setId(scanner.next());
+                            while (true) {
+                                System.out.print("Enter ID (Form: IDxxxx): ");
+                                String id = scanner.nextLine();
+
+                                if (manager.setId(id)) {
+                                    System.out.println("Valid ID!");
+                                    break;
+                                }
+                                System.out.println("Invalid ID! Please enter again.");
+                            }
                             scanner.nextLine();
 
-                            System.out.print("Name of the employee: ");
-                            manager.setName(scanner.nextLine());
+                            while (true) {
+                                System.out.print("Enter name: ");
+                                String name = scanner.nextLine();
+
+                                if (manager.setName(name)) {
+                                    System.out.println("Valid Name!");
+                                    break;
+                                }
+                                System.out.println("Invalid Name! Please enter again.");
+                            }
 
                             System.out.print("Hire year of the employee: ");
                             manager.setHireYear(scanner.nextInt());
@@ -101,12 +128,28 @@ public class Main {
                             break;
                         case 3:
                             PartTimeEmployee pt_employee = new PartTimeEmployee();
-                            System.out.print("ID of the employee (Form: IDxxxx): ");
-                            pt_employee.setId(scanner.next());
+                            while (true) {
+                                System.out.print("Enter ID (Form: IDxxxx): ");
+                                String id = scanner.nextLine();
+
+                                if (pt_employee.setId(id)) {
+                                    System.out.println("Valid ID!");
+                                    break;
+                                }
+                                System.out.println("Invalid ID! Please enter again.");
+                            }
                             scanner.nextLine();
 
-                            System.out.print("Name of the employee: ");
-                            pt_employee.setName(scanner.nextLine());
+                            while (true) {
+                                System.out.print("Enter name: ");
+                                String name = scanner.nextLine();
+
+                                if (pt_employee.setName(name)) {
+                                    System.out.println("Valid Name!");
+                                    break;
+                                }
+                                System.out.println("Invalid Name! Please enter again.");
+                            }
 
                             System.out.print("Hire year of the employee: ");
                             pt_employee.setHireYear(scanner.nextInt());
@@ -192,7 +235,7 @@ public class Main {
                     techViet.removeEmployeeById(id);
                     break;
             }
+            System.out.println("End program!");
         }
-        System.out.println("End program!");
     }
 }
