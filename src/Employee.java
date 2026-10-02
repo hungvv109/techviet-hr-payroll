@@ -1,4 +1,4 @@
-public abstract class Employee extends Company implements Taxable {
+public abstract class Employee implements Taxable {
 
     private String id; // ID0001, ID0100, ID0099
     private String name;

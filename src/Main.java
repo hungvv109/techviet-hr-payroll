@@ -4,21 +4,26 @@ public class Main {
     public static void main(String[] args) {
         Company techViet = new Company();
         Scanner scanner = new Scanner(System.in);
+        int input = 1;
+
+        while (input > 0) {
 
         System.out.println("""
-                1. Add new employee.
-                2. Customize salary.
-                3. Show employee list.
-                4. Calculate all company salary.
-                5. Find highest salary employee.
-                6. Sort by salary in descending order.
-                7. Export salary report (have tax).
-                8. Remove the employee by ID.
-                0. Exit
+                ╔══════════════════════Tech Viet payroll program════════════════════════╗
+                ║ 1. Add new employee.                                                  ║
+                ║ 2. Customize salary.                                                  ║
+                ║ 3. Show employee list.                                                ║
+                ║ 4. Calculate all company salary.                                      ║
+                ║ 5. Find highest salary employee.                                      ║
+                ║ 6. Sort by salary in descending order.                                ║
+                ║ 7. Export salary report (have tax).                                   ║
+                ║ 8. Remove the employee by ID.                                         ║
+                ║ 0. Exit                                                               ║
+                ╚═══════════════════════════════════════════════════════════════════════╝
                 """);
 
         System.out.print("Please enter your feature: ");
-        int input = scanner.nextInt();
+        input = scanner.nextInt();
 
         while (input < 0 || input > 8) {
             System.out.println("""
@@ -44,8 +49,9 @@ public class Main {
 
                 while (sub_input < 0 || sub_input > 3) {
                     System.out.println("""
-                    Invalid number!
-                    Please enter again!""");
+                            Invalid number!
+                            Enter again!
+                            Please enter:\s""");
                     sub_input = scanner.nextInt();
                 }
 
@@ -121,7 +127,7 @@ public class Main {
                         System.out.println("Add employee success!");
                         break;
                     case 3:
-                        Employee pt_employee = new PartTimeEmployee();
+                        PartTimeEmployee pt_employee = new PartTimeEmployee();
                         while (true) {
                             System.out.print("Enter ID (Form: IDxxxx): ");
                             String id = scanner.nextLine();
@@ -148,8 +154,9 @@ public class Main {
                         System.out.print("Hire year of the employee: ");
                         pt_employee.setHireYear(scanner.nextInt());
 
-                        System.out.print("Base salary of the employee: ");
-                        pt_employee.setBaseSalary(scanner.nextDouble());
+                        System.out.println("Hourly Rate = " + pt_employee.getHourlyRate() + "vnd");
+                        System.out.print("Hours worked this month: ");
+                        pt_employee.setHoursWorkedThisMonth(scanner.nextInt());
 
                         techViet.addEmployee(pt_employee);
                         System.out.println("Add employee success!");
@@ -197,12 +204,12 @@ public class Main {
 
             // Show employee list in TechViet
             case 3:
-                techViet.showAllEmployees();
+                techViet.sortEmployeeById();
                 break;
 
             // Calculate all company salary
             case 4:
-                System.out.print("TechViet salary: " + techViet.getTotalPayroll());
+                System.out.println("TechViet salary: " + techViet.getTotalPayroll());
                 break;
 
             // Find highest salary employee.
