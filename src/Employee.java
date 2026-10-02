@@ -26,16 +26,26 @@ public abstract class Employee implements Taxable {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public boolean setId(String id) {
+        id = id.trim();
+        if (id.matches("^ID[0-9]{4}$")) {
+            this.id = id;
+            return true;
+        }
+        return false;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public boolean setName(String name) {
+        name = name.trim();
+        if (!name.isEmpty()) {
+            this.name = name;
+            return true;
+        }
+        return false;
     }
 
     public int getHireYear() {
